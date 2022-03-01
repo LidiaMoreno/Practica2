@@ -166,7 +166,25 @@ ggsave("Ejercicio1.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio2.pdf``.
 
 ```{r Solucion ejercicio 2}
+#Creacion de un grafico de dispersion
+grafico1 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am))
+grafico1
 
+#Incluimos informacion categorica con la forma del punto
+grafico2 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, shape = RainToday)) + geom_point()
+grafico2
+
+#Incluimos informacion categorica sobre el color de los puntos
+grafico3 <- ggplot(ds, aes(x = Temp9am, y = Pressure9am, shape = RainToday, colour = RainToday)) + geom_point()
+grafico3
+#Claramente vemos que con la representacion a color se observa mejor la informacion
+
+#Añadimos un titulo
+grafico4 <- grafico3 + ggtitle("Grafica de dispersion: presion frente a temperatura")
+grafico4
+
+#Almacenamos en formato pdf el grafico resultante (Ejercicio2.pdf)
+ggsave("Ejercicio2.pdf")
 ```
 
 ### **Ejercicio 3**
