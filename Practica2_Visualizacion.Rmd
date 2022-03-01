@@ -421,7 +421,7 @@ grafico3 <- grafico_2 + theme(axis.text.x = element_text(angle = 45), legend.pos
 grafico3
 
 #Almacenamos en formato pdf el grafico resultante (Ejercicio6.pdf)
-#ggsave("Ejercicio6.pdf")
+ggsave("Ejercicio6.pdf")
 ```
 
 ## Histogramas con **ggplot2**
