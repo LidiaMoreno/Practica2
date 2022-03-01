@@ -134,7 +134,27 @@ p2
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio1.pdf``.
 
 ```{r Solucion ejercicio 1}
+#Cargamos el fichero
+load("./data/weatherAUS.RData")
 
+#Creacion del objeto ggplot
+grafico1 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp))
+grafico1
+
+#Añadimos una capa para definir un objeto geometrico para construir un grafico de dispersion, en este caso puntos 
+grafico_1 <- grafico1 + geom_point()
+grafico_1
+
+#Visualizacion de las variables en los ejes de la grafica y el color
+grafico2 <- ggplot(ds, aes(x = MinTemp, y = MaxTemp, colour = RainTomorrow)) + geom_point()
+grafico2
+
+#Añadimos un titulo al grafico
+grafico3 <- grafico2 + ggtitle("Grafico de dispersion: temperaturas maximas y minimas")
+grafico3
+
+#Almacenamos en formato pdf el grafico resultante (Ejercicio1.pdf)
+ggsave("Ejercicio1.pdf")
 ```
 
 ### **Ejercicio 2**
