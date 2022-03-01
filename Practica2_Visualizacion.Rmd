@@ -199,7 +199,39 @@ ggsave("Ejercicio2.pdf")
 * Almacena en formato **pdf** el gráfico resultante en un fichero denominado ``Ejercicio3.pdf``.
 
 ```{r Solucion ejercicio 3}
+#Cargamos el fichero
+load("./data/iris_tidy.Rdata")
 
+#Visualizacion de las variables contenidas en el dataset
+str(iris.tidy)
+
+#Creamos un objeto ggplot
+iris.grafico1 <- ggplot(iris.tidy, aes(x = Species, y = Value))
+iris.grafico1
+
+#Añadimos una capa en la que definimos el objeto geometrico necesario para la construccion del grafico de dispersion
+iris.grafico_1 <- iris.grafico1 + geom_point()
+iris.grafico_1
+
+#Modificamos el aesthetics del grafico anterior para representar el color del punto correspondiente
+iris.grafico2 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_point()
+iris.grafico2
+
+#Incluimos informacion creando dos graficos de dispersion
+iris.grafico3 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_point() + facet_grid(Measure~.)
+iris.grafico3
+#Cambiamos la dispersion de los graficos en columnas
+iris.grafico4 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_point() + facet_grid(.~Measure)
+iris.grafico4
+#Observamos que la dispersion en columnas nos permite comparar mejor los valores de dichas variables
+
+#Hacemos un cambio de capas
+iris.grafico5 <- ggplot(iris.tidy, aes(x = Species, y = Value, colour = Part)) + geom_jitter() + facet_grid(.~Measure)
+iris.grafico5
+#La mayor diferencia que podemos observar es que con geom_point() los datos aparecen representados mas unidos, mientras que con geom_jitter() estan mas dispersos
+
+#Almacenamos en formato pdf el grafico resultante (Ejercicio3.pdf)
+ggsave("Ejercicio3.pdf")
 ```
 
 ## Gráficos de línea con **ggplot2**
